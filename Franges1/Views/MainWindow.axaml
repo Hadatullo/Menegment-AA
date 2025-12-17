@@ -1,0 +1,240 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
+        x:Class="Franges1.Views.MainWindow"
+        Title="Личный кабинет франчайзера"
+        WindowStartupLocation="CenterScreen"
+        MinWidth="1000" MinHeight="600">
+    
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+    </Window.Styles>
+
+    <DockPanel Background="#F8F9FA">
+        <!-- Верхняя панель с меню -->
+        <Border DockPanel.Dock="Top" 
+                Background="White" 
+                BorderBrush="#E5E7EB" 
+                BorderThickness="0 0 0 1"
+                Height="60">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Логотип и название -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="🏢" FontSize="20" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <TextBlock Text="ООО Торговые автоматы" FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Навигационное меню -->
+                <StackPanel Grid.Column="1" 
+                           Orientation="Horizontal" 
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Spacing="30">
+                    <Button Content="Главная" 
+                           Background="Transparent" 
+                           BorderThickness="0"
+                           FontWeight="Bold"
+                           Foreground="Red"/>
+                    <Button Content="💻Монитор ТА" 
+                           Background="Transparent" 
+                           BorderThickness="0"
+                           Foreground="#6B7280"/>
+                    <Button Content="📄Детальные отчеты" 
+                           Background="Transparent" 
+                           BorderThickness="0"
+                           Foreground="#6B7280"/>
+                    <PathIcon Grid.Column="0" Data="M7 10l5 5 5-5z" 
+                              Width="12" 
+                              Height="12"
+                              Foreground="#6B7280"
+                              VerticalAlignment="Center"/>
+                    
+                    <Button Content="🛒Учет ТМЦ" 
+                           Background="Transparent" 
+                           BorderThickness="0"
+                           Foreground="#6B7280"/>
+                    <PathIcon Grid.Column="0" Data="M7 10l5 5 5-5z" 
+                              Width="12" 
+                              Height="12"
+                              Foreground="#6B7280"
+                              VerticalAlignment="Center"/>
+                    
+                    <Button Content="⚙️Администрирование" 
+                           Background="Transparent" 
+                           BorderThickness="0"
+                           Foreground="#6B7280"/>
+                </StackPanel>
+                
+                <PathIcon Grid.Column="0" Data="M7 10l5 5 5-5z" 
+                          Width="12" 
+                          Height="12"
+                          Foreground="#6B7280"
+                          VerticalAlignment="Center"/>
+                
+                <!-- Профиль пользователя -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="UserProfileButton" 
+                           Background="Transparent" 
+                           BorderThickness="0"
+                           Padding="10,5">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <!-- Аватар пользователя -->
+                            <Border Width="40" 
+                                   Height="40" 
+                                   CornerRadius="20"
+                                   Background="Red">
+                                <TextBlock Text="🇷🇺" 
+                                          Foreground="White" 
+                                          FontWeight="Bold"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                            </Border>
+                            
+                            <!-- Информация о пользователе -->
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Автоматов А.А." 
+                                          FontWeight="SemiBold"
+                                          Foreground="#1F2937"/>
+                                <TextBlock Text="Администратор" 
+                                          FontSize="12"
+                                          Foreground="MediumSpringGreen"/>
+                            </StackPanel>
+                            
+                            <!-- Стрелка вниз -->
+                            <PathIcon Data="M7 10l5 5 5-5z" 
+                                     Width="12" 
+                                     Height="12"
+                                     Foreground="#6B7280"
+                                     VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Заголовок и приветствие -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,30">
+                    <TextBlock Text="Главная" 
+                              FontSize="28" 
+                              FontWeight="Bold"
+                              Foreground="#1F2937"/>
+                    <TextBlock Text="Добро пожаловать в личный кабинет франчайзера" 
+                              FontSize="16"
+                              Foreground="MediumSpringGreen"
+                              Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Карточки с статистикой -->
+                <ItemsControl Grid.Row="1" x:Name="StatsCards">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="280" 
+                                   Height="140" 
+                                   Background="White"
+                                   CornerRadius="12"
+                                   BorderBrush="#E5E7EB"
+                                   BorderThickness="1"
+                                   Margin="0,0,0,20">
+                                <Border.BoxShadow>
+                                </Border.BoxShadow>
+                                <StackPanel Margin="20" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding }" 
+                                              FontSize="16" 
+                                              Foreground="#6B7280"/>
+                                    <TextBlock Text="{Binding }" 
+                                              FontSize="32" 
+                                              FontWeight="Bold"
+                                              Foreground="#1F2937"
+                                              Margin="0,5,0,0"/>
+                                    <TextBlock Text="{Binding }" 
+                                              FontSize="12" 
+                                              Foreground="#10B981"
+                                              Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Последние действия -->
+                <Border Grid.Row="2" 
+                       Background="White"
+                       CornerRadius="12"
+                       BorderBrush="#E5E7EB"
+                       BorderThickness="1"
+                       Margin="0,20,0,0">
+                    <Border.BoxShadow>
+                    </Border.BoxShadow>
+                    <StackPanel Margin="20">
+                        <TextBlock Text="Последние действия" 
+                                  FontSize="18" 
+                                  FontWeight="Bold"
+                                  Foreground="#1F2937"
+                                  Margin="0,0,0,15"/>
+                        
+                        <ItemsControl x:Name="RecentActivities">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Padding="15,10" 
+                                           BorderBrush="#F3F4F6" 
+                                           BorderThickness="0 0 0 1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="{Binding }" 
+                                                          FontWeight="SemiBold"
+                                                          Foreground="#1F2937"/>
+                                                <TextBlock Text="{Binding }" 
+                                                          FontSize="12"
+                                                          Foreground="#6B7280"
+                                                          Margin="0,2,0,0"/>
+                                            </StackPanel>
+                                            
+                                            <TextBlock Grid.Column="1" 
+                                                      Text="{Binding }"
+                                                      FontSize="12"
+                                                      Foreground="#9CA3AF"
+                                                      VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

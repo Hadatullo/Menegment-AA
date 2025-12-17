@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Franges1.Views.LoginWindow"
+        Title="Вход в систему"
+        Width="400"
+        Height="300"
+        WindowStartupLocation="CenterScreen">
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20" Width="300">
+        <TextBlock Text="Личный кабинет франчайзера" 
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center"
+                   Foreground="#2c3e50"/>
+        
+        <Border Background="#f8f9fa" CornerRadius="8" Padding="20">
+            <StackPanel Spacing="15">
+                <TextBlock Text="Вход в систему" 
+                           FontSize="16" 
+                           FontWeight="SemiBold" 
+                           HorizontalAlignment="Center"
+                           Foreground="#2c3e50"/>
+                
+                <TextBox x:Name="UsernameBox" 
+                         Watermark="Имя пользователя" 
+                         FontSize="14" 
+                         Padding="10"
+                         Text="admin"/> <!-- Добавляем тестовое значение -->
+                
+                <TextBox x:Name="PasswordBox" 
+                         PasswordChar="*" 
+                         Watermark="Пароль" 
+                         FontSize="14" 
+                         Padding="10"
+                         Text="123"/> <!-- Добавляем тестовое значение -->
+                
+                <Button Content="Войти" 
+                        Click="OnLoginClick" 
+                        FontSize="14" 
+                        Padding="15,10"
+                        Background="Red"
+                        Foreground="White"
+                        BorderThickness="0"
+                        CornerRadius="4"/>
+                
+                <TextBlock x:Name="MessageText" 
+                           Text="Тестовое сообщение" 
+                           Foreground="Red" 
+                           TextAlignment="Center"
+                           FontSize="12"/>
+            </StackPanel>
+        </Border>
+        
+        <!-- Добавляем тестовую кнопку -->
+        <Button Content="Тестовая кнопка" 
+                Click="OnTestClick" 
+                Background="Green"
+                Foreground="White"/>
+    </StackPanel>
+</Window>
